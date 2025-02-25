@@ -1,0 +1,71 @@
+namespace sl19OOP.ödevClasses
+{
+    public class Car1
+    {
+        public void cikis(string marka, string vites)
+        {
+            Console.WriteLine("arabanın markası: " + marka + "  arabanın vites türü: " + vites);
+        }
+    }
+}
+//class'lar
+//1
+namespace sl19OOP.ödevClasses
+{
+    internal class Porsche : Car1
+    {
+    }
+}
+//2
+  namespace sl19OOP.ödevClasses
+{
+    public class BMW : Car1
+    {
+ //3   
+namespace sl19OOP.ödevClasses
+{
+    public class Audi : Car1
+    {
+    }
+}
+//4
+namespace sl19OOP.ödevClasses
+{
+    public class Mercedes : Car1
+    {
+    }
+}
+//5
+namespace sl19OOP.ödevClasses
+{
+    public class Togg : Car1
+    {
+    }
+}
+//6
+namespace sl19OOP.ödevClasses
+{
+    public class Toyota : Car1
+    {
+
+    }
+}
+
+// program.cs dosya içeriği
+Porsche porsh = new Porsche();
+porsh.cikis("Porsche", "Otomatik Viteslidir");
+
+BMW bMW = new BMW();
+bMW.cikis("BMW", "Düz Viteslidir");
+
+Audi audi = new Audi();
+audi.cikis("AUDİ", "Otomatik viteslidir");
+
+Mercedes merc  = new Mercedes();
+merc.cikis("Mercedes", "otomatik viteslidir");
+
+Togg t  = new Togg();
+t.cikis("TOGG", "Otomatik viteslidir.");
+
+Toyota tyt = new Toyota();
+tyt.cikis("Toyota", "Düz viteslidir.");
