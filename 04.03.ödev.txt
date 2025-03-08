@@ -1,0 +1,161 @@
+ Ödev-2
+ public class araba
+  {
+      public int yasHesapla(int yapimYili)
+      {
+          int sonuc = 0;
+          sonuc = DateTime.Now.Year - yapimYili;
+          return sonuc;
+      }
+  }
+------------------------------------------
+ödev-4
+namespace ConsoleAppÖdevler._04._03
+{
+    public class calisan
+    {
+        public int maashesapla(int maasBİlgi) 
+        {
+            return maasBİlgi;
+        }
+    }
+}
+----
+namespace ConsoleAppÖdevler._04._03
+{
+ public class stj: calisan
+ { }}
+----
+namespace ConsoleAppÖdevler._04._03
+{
+ public class m: calisan
+ { }}
+----
+namespace ConsoleAppÖdevler._04._03
+{
+public class pr: calisan
+ { }}
+----
+namespace ConsoleAppÖdevler._04._03
+{
+public class GM: calisan
+ { }}
+
+
+-------------------------------------------
+// program.cs
+
+ÖDEV-2
+araba araba = new araba();
+int year= araba.yasHesapla(1990);
+Console.WriteLine(year);
+
+if(0<=year && year < 10)
+{
+    Console.WriteLine("arabanız yeni, arabanızın yaşı:"+year);
+} 
+else if(10<= year && year < 20)
+{
+    Console.WriteLine("arabanızın servise ihtiyacı olabilir, arabanızın yaşı:" + year);
+}
+else if(20<= year && year < 30)
+{
+    Console.WriteLine("arabanız hurda olabilir, arabanızın yaşı:" + year);
+} else
+{
+    Console.WriteLine("arabanız ya hiç üretilmedi ya da trafikten men edilmiş olabilir., arabanızın yaşı:" +year);
+}
+
+
+----------------
+ÖDEV-1
+int yas = 65;
+
+if (0 < yas && yas < 18)
+{
+    Console.WriteLine("Küçüksünüz");
+}
+else if (18 <= yas && yas < 35)
+{
+    Console.WriteLine("Gençsiniz");
+}
+else if (35 <= yas && yas < 55)
+{
+    Console.WriteLine("Yetişkinsiniz");
+}
+else if (55 <= yas && yas < 75)
+{
+    Console.WriteLine("Yaşlısınız");
+}
+else if (75 <= yas && yas < 99)
+{
+    Console.WriteLine("Çok yaşlısınız");
+}
+else
+{
+    Console.WriteLine("Ya hiç doğmadınız ya da çoktan öldünüz.");
+}
+
+
+------------------
+ödev-4
+
+GM gm = new GM();
+int maas = gm.maashesapla(80000);
+Console.WriteLine("Ahmet ALkan Genel Müdür. Maaşı:" +maas);
+
+
+m m = new m();
+int maasM = m.maashesapla(60000);
+Console.WriteLine("ali müdür. maaş:" +maasM);
+
+
+pr pr = new pr();
+int maasP = pr.maashesapla(20000);
+Console.WriteLine("gülsüm programcı. maaşı:" +maasP);
+
+stj stj = new stj();
+int maasS = stj.maashesapla(5000);
+Console.WriteLine("gülsüm stajyer. maaşı:" + maasS);
+
+int toplam = 0;
+toplam = toplam + maas + maasM + maasP + maasS;
+Console.WriteLine(toplam);
+
+---------------------------------------
+ÖDEV-5
+   string[] marka = { "toyota", "bmw", "honda" };
+   double[] yakit = { 80.0, 70.0, 60.0 };
+
+   double toplamBenzin = 0;
+
+   for (int i = 0; i < marka.Length; i++)
+   {
+       toplamBenzin += yakit[i];
+       Console.WriteLine(marka[i] + ":" + yakit[i]);
+   }
+   Console.WriteLine("toplam benzin:" + toplamBenzin);
+
+
+
+---------------------------------------
+ödev-3
+
+        int sayac = 1;
+
+        // while döngüsü
+        while (sayac <= 3)
+        {
+            Console.WriteLine("While döngüsü: " + sayac);
+            sayac++;
+        }
+
+int sayac2 = 1;
+
+// do-while döngüsü
+do
+{
+    Console.WriteLine("Do-While döngüsü: " + sayac2);
+    sayac2++;
+} while (sayac2 <= 0);
+
