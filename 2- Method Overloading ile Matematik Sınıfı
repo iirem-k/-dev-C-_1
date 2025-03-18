@@ -1,4 +1,5 @@
-    public class Matematik
+2-
+public class Matematik
     {
         public int Topla(int sayi1, int sayi2)
         {
@@ -29,8 +30,8 @@
         }
     }
 }
-------------------------------------------
-
+----------------------------------------
+1-
 program.cs
 
 Matematik matematik = new Matematik();
@@ -41,3 +42,104 @@ matematik.Topla(2,3);
 Console.WriteLine("çarpım:" + matematik.Carp(2.5, 8.4));
 Console.WriteLine("2d 1 int:" + matematik.Carp(3.6, 6, 7.3));
 matematik.Carp(2.5, 8.4);
+-------------------
+
+
+
+public class Araba
+{
+    public Mrka marka1;
+    public Model model;
+    public Kasa kasa;
+    public Pencere pencere;
+    public Kapi kapi;
+
+    public Araba(Mrka marka1, Model model, Kasa kasa, Pencere pencere, Kapi kapi)
+    {
+        this.marka1 = marka1;
+        this.model = model;
+        this.kasa = kasa;
+        this.pencere = pencere;
+        this.kapi = kapi;
+    }
+}
+
+public class Galeri
+{
+    public Araba araba;
+
+    public Galeri(Araba araba)
+    {
+        this.araba = araba;
+    }
+
+    public void ekranayaz()
+    {
+        Console.WriteLine("arabanın markası: " + araba.marka1.MarkaAdi +
+                          " modeli: " + araba.model.modelAdi +
+                          " kasası: " + araba.kasa.KasaTipi +
+                          " penceresi: " + araba.pencere.sekil +
+                          " kapısı: " + araba.kapi.KapiSayisi);
+    }
+}
+
+public class Kapi
+{
+    public int KapiSayisi;
+
+    public Kapi(int kapiSayisi)
+    {
+        this.KapiSayisi = kapiSayisi;
+    }
+}
+
+public class Kasa
+{
+    public string KasaTipi;
+
+    public Kasa(string kasaTipi)
+    {
+        this.KasaTipi = kasaTipi;
+    }
+}
+
+public class Model
+{
+    public string modelAdi;
+
+    public Model(string modelAdi)
+    {
+        this.modelAdi = modelAdi;
+    }
+}
+
+public class Mrka
+{
+    public string MarkaAdi;
+
+    public Mrka(string markaAdi)
+    {
+        this.MarkaAdi = markaAdi;
+    }
+}
+
+public class Pencere
+{
+    public string sekil;
+
+    public Pencere(string sekil)
+    {
+        this.sekil = sekil;
+    }
+}
+
+program.cs
+        Mrka marka1 = new Mrka("BMW");
+        Model model = new Model("X5");
+        Kasa kasa = new Kasa("sedan");
+        Pencere pencere = new Pencere("oval");
+        Kapi kapi = new Kapi(4);
+        Araba araba = new Araba(marka1, model, kasa, pencere, kapi);
+        Galeri galeri = new Galeri(araba);
+        galeri.ekranayaz();
+    
