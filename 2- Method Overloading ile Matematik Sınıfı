@@ -1,0 +1,43 @@
+    public class Matematik
+    {
+        public int Topla(int sayi1, int sayi2)
+        {
+            int sonuc = 0;
+            sonuc = sayi2 + sayi1;
+            return sonuc;
+        }
+       
+        public int Topla(int sayi1, int sayi2, int sayi3)
+        {
+            int sonuc = 0;
+            sonuc= sayi1 + sayi2+ sayi3;
+            return sonuc;
+        }
+
+       public double Carp(double sayi4, double sayi5)
+        {
+            double sonuc = 0;
+            sonuc = sayi4 * sayi5;
+            return sonuc;
+        }
+
+        public double Carp(double sayi6, int sayi7, double sayi8)
+        {
+            double sonuc = 0;
+            sonuc = sayi6 * sayi7* sayi8;
+            return sonuc;
+        }
+    }
+}
+------------------------------------------
+
+program.cs
+
+Matematik matematik = new Matematik();
+Console.WriteLine("toplam:"+ matematik.Topla(3,5));
+Console.WriteLine("üç sayı top:" + matematik.Topla(1, 2, 3));
+matematik.Topla(2,3);
+
+Console.WriteLine("çarpım:" + matematik.Carp(2.5, 8.4));
+Console.WriteLine("2d 1 int:" + matematik.Carp(3.6, 6, 7.3));
+matematik.Carp(2.5, 8.4);
