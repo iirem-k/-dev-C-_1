@@ -1,2 +1,13 @@
+using System;
 
-Console.WriteLine("Merhaba Dünya!!");
+namespace Merhabadunya
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Merhaba Dünya!!");
+           
+        }
+    }
+}
