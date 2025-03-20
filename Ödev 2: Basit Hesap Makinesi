@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsolDersOOPSL19
+{
+
+    class HesapMakinesi
+    {
+        static void Main(string[] args)
+        {
+
+            Console.Write("ilk sayıyı giriniz:");
+            double a = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("ikinci sayıyı giriniz:");
+            double b = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("işlem numarası giriniz(1,2,3,4):");
+            int islem = Convert.ToInt32(Console.ReadLine());
+
+            if (islem == 1)
+            {
+                Toplamaİslemi(a, b);
+            }
+            else if (islem == 2)
+            {
+                Cikarmaİslemi(a, b);
+            }
+            else if (islem == 3)
+            {
+                Bölmeİslemi(a, b);
+            }
+            else if (islem == 4)
+            {
+                Carpmaİslemi(a, b);
+            }
+        }
+
+        static void Toplamaİslemi(double a, double b)
+        {
+            Console.WriteLine("toplama işlemi yapılıyor.. ");
+            double sonucİfadesi = a + b;
+            Console.WriteLine("işlemin sonucu:" + sonucİfadesi);
+        }
+        static void Cikarmaİslemi(double a, double b)
+        {
+            Console.WriteLine("Çıkartma işlemi yapılıyor...");
+            double sonucİfadesi = a - b;
+            Console.WriteLine("Çıkartma işlemi sonucu: " + sonucİfadesi);
+        }
+        static void Bölmeİslemi(double a, double b)
+        {
+            Console.WriteLine("bölme işlemi yapılıyor..");
+            double sonucİfadesi = a / b;
+            Console.WriteLine("bölme işlemi sonucu:" + sonucİfadesi);
+        }
+        static void Carpmaİslemi(double a, double b)
+        {
+            Console.WriteLine("Çarpma işlemi yapılıyor..");
+            double sonucİfadesi = a * b;
+            Console.WriteLine("Çarpma işlemi sonucu" + sonucİfadesi);
+        }
+    }
+}
+
