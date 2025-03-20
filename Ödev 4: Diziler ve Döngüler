@@ -1,0 +1,26 @@
+program.cs
+
+Console.WriteLine("Kaç adet sayı girişi yapacaksınız:");
+int boyut = int.Parse(Console.ReadLine());
+Console.WriteLine( boyut+ " adet sayı girişi yapılacak");
+
+int[] sayilar = new int[boyut];
+
+ for(int i = 0; i< boyut; i++)
+{
+    Console.Write(i+1  + ". sayıyı giriniz:");
+    sayilar[i] = int.Parse(Console.ReadLine());
+}
+Console.WriteLine("Girilen sayılar:");
+for(int i=0; i< boyut; i++)
+{
+    Console.WriteLine(sayilar[i]);
+}
+
+int sayilarToplam=0;
+foreach(int sayi in sayilar)
+{
+    sayilarToplam += sayi;
+}
+Console.WriteLine("Girilen sayıların toplamı: "+sayilarToplam);
+Console.WriteLine("Girilen sayıların ortalaması:"  + sayilarToplam/boyut);
