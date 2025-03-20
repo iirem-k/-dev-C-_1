@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleAppÖdevler
+{
+    public class NumberGuessingGame
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(1, 11); // 1 ile 10 arasında rastgele sayı üret
+            int guessNumber = 0;
+            int guessCount = 0;
+
+            Console.WriteLine("Bilgisayar 1 ile 10 arasında bir sayı tuttu. Tahmin et bakalım!");
+
+            while (guessNumber != randomNumber)
+            {
+                Console.Write("Tahmininiz: ");
+                guessNumber = Convert.ToInt32(Console.ReadLine());
+                guessCount++;
+
+                if (guessNumber < randomNumber)
+                {
+                    Console.WriteLine("Bilgisayar daha büyük bir sayı tahmin etti!");
+                }
+                else if (guessNumber > randomNumber)
+                {
+                    Console.WriteLine("Bilgisayar daha küçük bir sayı tahmin etti");
+                }
+                else
+                {
+                    Console.WriteLine("TEBRİKLERR!! Doğru tahmin yaptınız");
+                }
+            }
+            Console.WriteLine($"Tebrikler! {guessCount}. tahminde doğru sayıyı buldunuz.");
+        }
+    }
+}
