@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleAppÖdevler
+{
+    public class Car
+    {
+        public string Marka { get; set; }
+        public string Model { get; set; }
+        public double FuelConsumption { get; set; }
+        public double TotalDistance { get; set; }
+
+        public double TotalFuelConsumption()
+        {
+            return (TotalDistance / 100) * FuelConsumption;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Car> cars = new List<Car>()
+            {
+                new Car { Marka = "Toyota", Model = "Corolla", FuelConsumption = 6.5, TotalDistance = 325 },
+                new Car { Marka = "BMW", Model = "X5", FuelConsumption = 9.0, TotalDistance = 450 },
+                new Car { Marka = "Mercedes", Model = "C200", FuelConsumption = 8.2, TotalDistance = 410 },
+                new Car { Marka = "porsche", Model = "pors4", FuelConsumption = 6.8, TotalDistance = 455 }
+            };
+
+            foreach (var car in cars)
+            {
+                Console.WriteLine("Marka: " + car.Marka + " Model: " + car.Model +
+                                  " 100 km'de Yaktığı Yakıt: " + car.FuelConsumption +
+                                  " Toplam Yakıt Tüketimi: " + car.TotalFuelConsumption());
+            }
+        }
+    }
+}
+
+/*
+Görsel programlama
+Programlama süreçlerini görsel öğeler ve grafiksel kullanıcı arayüzleri (GUI) kullanarak gerçekleştirmeyi amaçlayan bir yöntemdir.
+Bir programın metin yerine grafiksel olarak temsil edildiği ve işlendiği  bir programlama dili veya  ortamı . Yaygın bir görsel metafor,
+ifadeleri ve kontrol yapılarını, metinsel sözdizimiyle uğraşmak zorunda kalmadan programlamaya olanak tanıyan programlar oluşturmak için
+birleştirilebilen grafik bloklar olarak temsil eder.
+
+Metin tabanlı programlamaya göre kod yazma yöntemlerinin zorluklarıyla baş etmek zorunda olmamak hem daha efektif bir yaklaşım sağlarken 
+hemde zamanı daha verimli kullanma imkanı sağlamaktadır, ayrıca metin tabanlı programlamada manuel ve geleneksel kod yazma yöntemlerinde 
+karşılaşılan syntax, scope ve null/none vb birçok sorunun büyük bir kısmı ile karşılaşmaması verimlilik açısından önemli bir faktördür. 
+
+Fakat bu zorlukların yanında metin tabanlı dillerde kapsam oldukça geniştir, yani bir proje için tercih edilebilecek diller ve yöntemler
+tamamen yazılımcının tercihine bağlıdır görsel programlamada bu esneklik hazır kod bloklarının yahut kullanılan yardımcı kaynağın sınırlarına
+bağlıdır yazılımcı bu seçenekler arasından kendisine en uygun olanı ile kodunu oluşturma imkanına sahiptir. 
+Görsel programlama ile bilgisayarla metin üzerinden değil, görseller üzerinden iletişim kurarsınız. Kullanıcı her istediği kod bloğunu bulabilme 
+imkanına yahut oluşturduğu projeyi tamamlayacak kod bloklarının birbirine uyumları konusunda da sıkıntı çekebilmektedir bu durum görsel programlama
+yaklaşımının maalesef kapsamlı ve büyük projelerde kullanımını da oldukça sınırlamaktadır metin tabanlı programlama bu konuda da büyük esnekliklere
+sahiptir yazılımcı dilediği karmaşıklıka ve boyutta kodu kendi tasarrufunda geliştirebilmektedir.
+
+
+
+
+Kaynak:https://www-digitaltechnologieshub-edu-au.translate.goog/teach-and-assess/classroom-resources/topics/visual-programming/?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc
+https://bubble-io.translate.goog/blog/visual-programming/?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=wa
+
+*/
