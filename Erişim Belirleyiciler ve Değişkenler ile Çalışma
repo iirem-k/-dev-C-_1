@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleAppÖdevler
+{
+    public class Kullanici
+    {
+
+        private string adsoyad;
+        private int yas;
+        public string email;
+
+        public string Adsoyad
+        {
+            get { return adsoyad; }
+            set { adsoyad = value; }
+        }
+        public int Yas
+        {
+            get { return yas; }
+            set { yas = value; }
+        }
+
+        public void bilgileriGöster( )
+        {
+            Console.WriteLine("adı soyadı:"+adsoyad+ " yaşı:"+yas+" e mail:"+email);
+        }
+    }
+}
+
+
+program.cs
+
+
+
+Kullanici kullanici = new Kullanici();
+kullanici.Adsoyad= "İrem Kaya";
+kullanici.Yas = 21;
+kullanici.email = "deneme.OOP19SL@gmail.com";
+
+kullanici.bilgileriGöster();
