@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WinFormsApp2
+{
+    public partial class ArabaBilgi : Form
+    {
+        string Marka = "";
+        string Model = "";
+        string Renk = "";
+        string KapiSayisi = "";
+        string PencereSayisi ="";
+        string Yakit = "";
+        public ArabaBilgi()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void cmbMarka_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Marka = cmbMarka.SelectedItem.ToString();
+        }
+      
+
+        private void cmbModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Model = cmbModel.SelectedItem.ToString();
+        }
+
+        private void cmbRenk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Renk = cmbRenk.SelectedItem.ToString();
+        }
+
+        private void cmbKapiSayisi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KapiSayisi= cmbKapiSayisi.SelectedIndex.ToString();
+        }
+
+        private void cmbPencereSayisi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PencereSayisi = cmbPencereSayisi.SelectedIndex.ToString();
+        }
+
+        private void cmbYakit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Yakit= cmbYakit.SelectedItem.ToString();
+        }  
+        private void btnBilgiGoster_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Bilgileri görmek istiyor musunuz?", "Bilgileri Göster", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // Bilgileri bir MessageBox içinde göster
+                string infoMessage = "Arabanızın bilgileri: " + "\n" +
+                    "Marka: " + Marka + "\n" +
+                    "Model: " + Model + "\n" +
+                    "Renk: " + Renk + "\n" +
+                    "Kapı Sayısı: " + KapiSayisi + "\n" +
+                    "Pencere Sayısı: " + PencereSayisi + "\n" +
+                    "Yakıt Türü: " + Yakit;
+
+                // Bilgileri göstermek için MessageBox'u kullan
+                MessageBox.Show(infoMessage, "Araba Bilgileri", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
+    }
+}
+// messageBox kısmında youtube'dan destek aldım teşekkürler.
