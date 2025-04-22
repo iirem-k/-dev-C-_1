@@ -1,0 +1,97 @@
+
+using System;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
+
+namespace ödemeyönt
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            this.Load += Form1_Load;
+        }
+
+        // İnterface
+        public interface IOdemeYontemi
+        {
+            string Ode(decimal tutar);// metod
+        }
+
+        // SINIFLAR
+        public class KrediKarti : IOdemeYontemi
+        {
+            public string Ode(decimal tutar) // implement ettim
+            {
+                return $"Kredi Kartı ile {tutar:C} ödeme yapıldı.";
+            }
+        }
+
+        public class Havale : IOdemeYontemi
+        {
+            public string Ode(decimal tutar)  
+            {
+                return $"Havale ile {tutar:C} ödeme yapıldı.";
+            }
+        }
+
+        public class EFT : IOdemeYontemi
+        {
+            public string Ode(decimal tutar)
+            {
+                return $"EFT ile {tutar:C} ödeme yapıldı.";
+            }
+        }
+
+        // FORM LOAD → sınıfları bul, combobox'a ekle
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var odemeYontemleri = Assembly.GetExecutingAssembly() // bu kısmında yardım almak zorunda kaldım tek bşıma yapamadım 
+                .GetTypes()
+                .Where(t => typeof(IOdemeYontemi).IsAssignableFrom(t) && t.IsClass)
+                .ToList();                                        // buraya kadar yardım aldım.
+
+            // ComboBox'a sınıf isimlerini ekle
+            foreach (var sinif in odemeYontemleri)
+            {
+                cmbOdemeTipi.Items.Add(sinif.Name);
+            }
+
+           
+            if (cmbOdemeTipi.Items.Count > 0)
+                cmbOdemeTipi.SelectedIndex = 0;
+        }
+
+        
+        private void btnOdeme_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
+                string className = "ödemeyönt." + cmbOdemeTipi.SelectedItem.ToString();
+
+                // Reflection ile nesne oluştur
+                IOdemeYontemi ıodemeyontemi = (IOdemeYontemi)
+                    Activator.CreateInstance(Type.GetType(className));
+
+                // Ode() metodunu çağır ve sonucu al
+                string sonuc = ıodemeyontemi.Ode(Convert.ToDecimal(txtTutar.Text));
+
+                // Sonucu Label'a yaz
+                lblBilgi.Text = sonuc;
+            }
+            catch (Exception ex)
+            {
+                
+                lblBilgi.Text = "Hata: " + ex.Message;
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            //silemiyorum hata veriyor
+        }
+    }
+}
