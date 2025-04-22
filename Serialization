@@ -1,0 +1,144 @@
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+
+namespace SerializationOrnek
+{
+    public partial class Form1 : Form
+    {
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSerializeEt_Click(object sender, EventArgs e)
+        {
+            // parametre alan constructor varmış gibi kullanılacak
+            Employee employee = new Employee
+            {
+                Name = txtAd.Text,
+                Phone = txtTelefon.Text,
+                DoB = dtpDogumTarihi.Value,
+                Department = txtDepartman.Text,
+                Salary = Convert.ToInt32(txtMaas.Text),
+            };
+            XmlSerializer serializer = new XmlSerializer(typeof(Employee));
+            FileStream fileStream = new FileStream("employee.xml", FileMode.Create, FileAccess.Write, FileShare.None);
+
+            try
+            {
+                // çalışmasını düşündüğümüz kodlar
+                using (fileStream)
+                {
+                    // bu using blok filestream nesnesi ile çalışmamız bittiğinde GC gerek kalmadan nesneyi silebilir
+                    // deconstructor mantığı nesneyi kullanmazsak ram'dan temizleyecek
+                    serializer.Serialize(fileStream, employee);
+                    txtAd.Text = "";// ad textinin içeriğini temizle
+                    txtDepartman.Text = "";
+                    txtMaas.Text = "";
+                    txtTelefon.Text = "";
+                    lblSonuc.Text = "Serialize işlemi gerçekleşti"; // serialize işlemi gerçekleşti mesajı
+                }
+            }
+            catch (Exception ex)
+            {
+                // exceotion; hata olursa yakalamak için hatanın neden kaynaklandığını yakalamamızı sağlar
+
+            }
+        }
+
+        private void btnDeserialize_Click(object sender, EventArgs e)
+        {
+            Employee emp = new Employee();
+            XmlSerializer xs = new XmlSerializer(typeof(Employee));
+            FileStream fsin = new FileStream("employee.xml", FileMode.Open, FileAccess.Read, FileShare.None);
+
+            try
+            { // deserialize
+                using (fsin)
+                { // string abc = "34"; Convert.ToInt32(abc); // stringi int'e çevirme işlemi (cast)
+                    emp = (Employee)xs.Deserialize(fsin); // cast(?) işlemi
+                    // xml. dosyası içindeki verileri oku onu bir employee nesnesine ata
+                    txtAd.Text = emp.Name;
+                    txtTelefon.Text = emp.Phone;
+                    txtDepartman.Text = emp.Department;
+                    txtMaas.Text = emp.Salary.ToString();// int değer alıyoruzz
+                    // txtMaas.Text = Convert.String(emp.Salary); // int değeri string'e çevirme işlemi
+                    lblSonuc.Text = "Deserialize işlemi gerçekleşti.";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("hata oluştu: " + ex.Message.ToString());
+            }
+        }
+
+        private void btnJsonOlustur_Click(object sender, EventArgs e)
+        {
+            product product = new product();
+            product.Name = "apple";
+            product.ExpireDate = new DateTime(2023, 10, 31);
+            product.Price = 10.5;
+
+            string filePath = "output.txt";
+            JsonSerializer serilaizer = new JsonSerializer();
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serilaizer.Serialize(writer, product);
+                    lblSonuc.Text = "Json dosyası oluşturuldu";
+                }
+            }
+        }
+    }
+}
+------------
+//class Employee
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace SerializationOrnek
+{
+    [Serializable]
+    public class Employee
+    {
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public DateTime DoB { get; set; }
+        public string Department { get; set; }
+        public int Salary { get; set; }
+
+    }
+}
+---------------------
+// class product
+
+namespace SerializationOrnek
+{      
+    [Serializable]
+    public class product
+    {
+        public string Name { get; set; }
+        public DateTime ExpireDate { get; set; }
+        public double Price { get; set; }
+    }
+}
