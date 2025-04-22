@@ -1,0 +1,80 @@
+namespace Listele1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnListele_Click(object sender, EventArgs e)
+        {
+            // Klasör seçme diyalogu
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedPath = folderDialog.SelectedPath;
+                    listBox1.Items.Clear();  // Önceki listeleri temizle
+
+                    // Klasör ve dosya tarama
+                    TaramaYap(selectedPath);
+                }
+            }
+
+        }
+        private void TaramaYap(string rootDirectory)
+        {
+            // Ana klasördeki alt klasörleri al
+            var directories = Directory.GetDirectories(rootDirectory);
+
+            foreach (var directory in directories)
+            {
+                
+                listBox1.Items.Add(Path.GetFileName(directory));
+
+                // Bu klasördeki .cs dosyalarını al
+                var csFiles = Directory.GetFiles(directory, "*.cs");
+
+                foreach (var csFile in csFiles)
+                {
+                    // Dosyayı oku ve class isimlerini bul
+                    var classNames = GetClassNames(csFile);
+
+                    foreach (var className in classNames)
+                    {
+                       
+                        listBox1.Items.Add( className);
+                    }
+                }
+            }
+        }
+
+        private string[] GetClassNames(string csFile)
+        {
+            try
+            {
+                // Dosyadaki satırları oku
+                var lines = File.ReadAllLines(csFile);
+
+                // "class" kelimesini içeren satırları filtrele
+                var classLines = lines.Where(line => line.Trim().StartsWith("class ")).ToList();
+
+                // Class isimlerini çıkart
+                var classNames = classLines.Select(line =>
+                {
+                    var parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    return parts[1];
+                }).ToArray();
+
+                return classNames;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Dosya okuma hatası: {ex.Message}");
+                return new string[] { };
+            }
+        }
+    }
+}
+    
