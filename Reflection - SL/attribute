@@ -1,0 +1,7 @@
+Attribute nedir :Genellikle bir nesne, kişi veya kavramın belirli bir yönünü veya niteliğini tanımlamak için kullanılır. run time da reflection kullanarak elde edilen ek bilgiler sağlarlar.
+Var olan veya bizim tarafımızdan üretilen/ türetilen nitelikler daima attribute sınıfından türemek zorundadır.
+Abstract classlardır. Dolayısıyla örneklenemez ancak bir nitelik sınıfının içermesi gereken temek üyeleri bünyesinde barındırır.
+oluşturulan attribut'ların hangi yapılarda kullanabileceğine karar verebiliyoruz bunun için örn:
+[AttributeUsage(AttributeTargets.Class| AttributeTargets.Method)] // burada örnek olarak sadece metodlarda kullanımına izin verildi
+Bir Attribute'ı birden fazla kere (veya yapıda) kullanmak istersek :
+[AttributeUsage(AttributeTargets.Class | AllowMultiple = true)] // şeklinde tanımlamamız gerekmeketedir.
