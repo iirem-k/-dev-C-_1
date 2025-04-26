@@ -1,0 +1,10 @@
+   [AttributeUsage(AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
+    public class ZorunluAlanAttributeCustom : Attribute
+    {
+        public string HataMesaji {  get;  }
+
+        public ZorunluAlanAttributeCustom(string hataMesaji) {
+            HataMesaji = hataMesaji;
+        }
+    
+    }
