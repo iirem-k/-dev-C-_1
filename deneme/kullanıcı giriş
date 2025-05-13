@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+//using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
+
+namespace veritabanıbaglantisi
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        static string constring = " Data Source=DESKTOP-DEG1LQD\\SQLEXPRESS01;Initial Catalog = Kisiler1; Integrated Security = True; Trust Server Certificate=True";
+        SqlConnection connection = new SqlConnection(constring);
+
+            
+            private void btnislemikaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                string kayit = "insert into bilgi1 (kullanici_adi, ad_soyad, telefon) values (@kullanici_adi,@ad,@telefon)";
+                SqlCommand komut = new SqlCommand(kayit, connection);
+
+                komut.Parameters.AddWithValue("@kullanici_adi",txt_kad.Text );
+                komut.Parameters.AddWithValue("@ad", txt_ad.Text);
+                komut.Parameters.AddWithValue("@telefon", txt_tlfn.Text);
+
+                komut.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("kayıt eklendi");
+            }
+            catch(Exception hata) {
+                MessageBox.Show("kayıt eklenmedi" + hata.Message);
+            }
+        }
+    }
+}
