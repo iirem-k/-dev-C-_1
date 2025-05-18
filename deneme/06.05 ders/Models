@@ -1,0 +1,19 @@
+namespace kayitformuDBli.Models
+{
+    public class Marka
+    {
+        // property 
+        public int id { get; set; }
+        public string markasi { get; set; }
+    }
+}
+
+
+namespace kayitformuDBli.Models
+{
+    public class modeller
+    {
+        public int id { get; set; }
+        public string modeli { get; set; }
+    }
+}
