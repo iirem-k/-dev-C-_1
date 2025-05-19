@@ -1,0 +1,17 @@
+namespace hastaneRandevuVkayit.Hastane
+{
+    public class Brans
+    {
+        public int ID { get; set; }
+        public string Bransi { get; set; }
+    }
+}
+----------------------------------------------
+  namespace hastaneRandevuVkayit.Hastane
+{
+    public class Doktor
+    {
+        public int ID { get; set; }
+        public string Doktoradi { get; set; }
+    }
+}
